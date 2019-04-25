@@ -1,0 +1,51 @@
+{% extends '_layouts/default.njk' %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 >Scheduler -
+            {{appointments[0].date}}</h4>
+
+        </div>
+        <div class="panel-body">
+          <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img alt="User Pic" src="/files/{{appointments[0].profesional.avatar}}" id="profile-image1" width="450px" class="img-circle img-responsive">
+          </div>
+          <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+            <div class="container">
+              <h2>{{appointments[0].profesional.name}}</h2>
+              <p>an
+                <b>
+                  Provider</b>
+              </p>
+              <a href="/app/logout" class="btn btn-xs btn-danger">Logout</a>
+            </div>
+            <hr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Hour</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for apoint in appointments %}
+                  <tr>
+                    <th scope="row">{{ apoint.hour}}</th>
+                    <td>{{apoint.client.name}}</td>
+                    <td>{{apoint.client.email}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <hr>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {% endblock body %}
